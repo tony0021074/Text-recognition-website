@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Text Recognizer</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'textrecognizer/style.css' %}">
+</head>
+<body>
+    <div id = "container">
+        <div id = "header">
+            <h1>Text Recognizer</h1>
+            <h2>Recognize text in images</h2>
+        </div>
+        <div id = "content">
+            <div id="main">
+                <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}<br>
+                    <input type="submit" value="Upload">
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- javscript js -->
+    <script src="{% static 'textrecognizer/js/custom.js' %}"></script>
+    <script src="{% static 'textrecognizer/js/jquery-3.4.1.min.js' %}"></script>
+
+</body>
+</html>
