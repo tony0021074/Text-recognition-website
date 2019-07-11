@@ -1,1 +1,2 @@
-web: gunicorn textrecognizesite.wsgi
+web: gunicorn textrecognizesite.wsgi;
+python manage.py collectstatic --noinput;
