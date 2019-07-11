@@ -5,6 +5,16 @@
 <head>
     <meta charset="UTF-8">
     <title>Result</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'textrecognizer/jquery-ui.css' %}">
+    <script src="{% static 'textrecognizer/js/jquery-3.4.1.js' %}"></script>
+    <script src="{% static 'textrecognizer/js/jquery-ui.js' %}"></script>
+    <script>
+        $(function() {
+            $( document ).tooltip({
+                track: true
+            });
+        });
+    </script>
 </head>
 <body>
     <div id = "container">
@@ -12,7 +22,12 @@
         </div>
         <div id = "content">
             <div id="main">
-                <img src="{{ image.uploadedImage.url }}" alt="{{ image.uploadedImage.name }} (processed)"/>
+                <img src="{{ image.image.url }}" alt="{{ image.name }} (processed)" usemap="#boxmap"/>
+                <map name="boxmap">
+                    {% for textbox in textboxes %}
+                    <area shape="poly" coords="{% for point in textbox.box %}{{ point.0 }},{{ point.1 }},{% endfor %}" alt="{{ textbox.text }}" title="{{ textbox.text }}"/>
+                    {% endfor %}
+                </map>
             </div>
         </div>
     </div>

@@ -1,3 +1,0 @@
-function openfileDialog() {
-    $("#fileLoader").click();
-}

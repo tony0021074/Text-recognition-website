@@ -54,6 +54,7 @@ class EASTModel():
 			# Apply NMS
 			indices = cv2.dnn.NMSBoxesRotated(rects, confidences, self.confThreshold, self.nmsThreshold)
 			textImgs = []
+			boxes = []
 			for i in indices:
 				# Get 4 corners of the rotated rect
 				vertices = cv2.boxPoints(rects[i[0]])
@@ -61,6 +62,7 @@ class EASTModel():
 				for j in range(4):
 					vertices[j][0] *= rW
 					vertices[j][1] *= rH
+				boxes.append(vertices)
 
 				# Mark a box on the frame
 				markImg(markedFrame, vertices)
@@ -79,7 +81,7 @@ class EASTModel():
 
 				textImgs.append(textImg)
 
-			yield (markedFrame, textImgs, vertices)
+			yield (markedFrame, textImgs, boxes)
 
 
 def rotate_image(img, angle):

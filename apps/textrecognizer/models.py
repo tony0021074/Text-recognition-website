@@ -13,10 +13,10 @@ class OverwriteStorage(FileSystemStorage):
             os.remove(os.path.join(settings.MEDIA_ROOT, name))
         return name
 
-class UploadedImageModel(models.Model):
+class UploadImageModel(models.Model):
     def __str__(self):
         return self.question_text
 
 
     name = models.CharField(max_length=200, primary_key=True)
-    uploadedImage = models.ImageField(upload_to='uploadedImages', storage=OverwriteStorage())
+    image = models.ImageField(upload_to='uploadedImages', storage=OverwriteStorage())
