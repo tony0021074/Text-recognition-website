@@ -62,7 +62,7 @@ class EASTModel():
 				for j in range(4):
 					vertices[j][0] *= rW
 					vertices[j][1] *= rH
-				boxes.append(vertices)
+				boxes.append([(round(point[0]), round(point[1])) for point in vertices])
 
 				# Mark a box on the frame
 				markImg(markedFrame, vertices)
