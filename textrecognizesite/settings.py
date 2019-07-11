@@ -129,7 +129,9 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL ='/media/'
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+DROPBOX_OAUTH2_TOKEN = 'MPJsIsRPC4AAAAAAAAAAmi49xGbfbQWJSG3wLeODlFZr9fM215uzM9abim2TB7Un'
+DROPBOX_ROOT_PATH = 'media'
+DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
 
 # Configure Django App for Heroku.
 django_heroku.settings(locals())
